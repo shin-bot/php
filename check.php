@@ -45,6 +45,10 @@ else
 	print'』<br>';
 }
 
+print'<form>';
+print'<input type="button" onclick="history.back()" value="戻る">';
+print'</form>';
+
 ?>
 
 </body>
