@@ -7,6 +7,12 @@
 <body>
 
 <?php
+$dsn='mysql:dbname=phpkiso;host=localhost';
+$user='root';
+$password='';
+$dbh=new PDO($dsn,$user,$password);
+$dbh->query('SET NAMES utf8');
+
 $nickname=$_POST['nickname'];
 $email=$_POST['email'];
 $goiken=$_POST['goiken'];
@@ -31,6 +37,12 @@ $mail_head='From:xxx@xxx.co.jp';
 mb_language('japanese');
 mb_internal_encoding("UTF-8");
 mb_send_mail($email,$mail_sub,$mail_body,$mail_head);
+
+$sql='INSERT INTO anketo(nickname,email,goiken)VALUES("'.$nickname.'","'.$email.'","'.$goiken.'")';
+$stmt=$dbh->prepare($sql);
+$stmt->execute();
+
+$dbh=null;
 ?>
 
 </body>
