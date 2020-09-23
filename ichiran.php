@@ -17,6 +17,24 @@ $sql='SELECT*FROM anketo WHERE1';
 $stmt=$dbh->prepare($sql);
 $stmt->execute();
 
+while(1)
+{
+	$rec=$stmt->fetch(PDO::FETCH_ASSOC);
+	if($rec==false)
+	{
+		break;
+	}
+	print $rec['code'];
+	print $rec['nickname'];
+	print $rec['email'];
+	print $rec['goiken'];
+	print '<br/>';
+}
+
+
+
+
+
 $dbh=null;
 ?>
 
