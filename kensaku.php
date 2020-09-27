@@ -34,12 +34,10 @@ while(1)
 	print '<br/>';
 }
 
-
-
-
-
 $dbh=null;
 ?>
 
+<br>
+<a href="kensaku.html">検索画面に戻る</a>
 </body>
 </html>
