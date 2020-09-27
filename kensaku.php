@@ -7,17 +7,18 @@
 <body>
 
 <?php
-$code=$_POST['code'];
 
+ini_set('display_errors', 1);
+$code=$_POST['code'];
 $dsn='mysql:dbname=phpkiso;host=localhost';
 $user='root';
 $password='';
 $dbh=new PDO($dsn,$user,$password);
 $dbh->query('SET NAMES utf8');
-
-$sql='SELECT*FROM anketo WHERE code='.$code;
+$sql='SELECT*FROM anketo WHERE code=?';
 $stmt=$dbh->prepare($sql);
-$stmt->execute();
+$data[]=$code;
+$stmt->execute($data);
 
 while(1)
 {
